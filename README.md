@@ -2,13 +2,12 @@
 
 **Social network in laravel (5.3)**
 
-###Concepts:
-  * Autentification
-  * Autorizacion
+  * Authentication
+  * Authorization
   * Likes and Posts
   * User profile, upload image
   * Validations
-  * Middlewares
+  * Enterprise applications and Web services (Middlewares)
 
 ###Interface:
   * Bootstrap
