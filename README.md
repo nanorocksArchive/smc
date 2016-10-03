@@ -7,7 +7,7 @@
   * Likes and Posts
   * User profile, upload image
   * Validations
-  * Enterprise applications and Web services (Middlewares)
+  * (Middlewares)
 
 ###Interface:
   * Bootstrap
