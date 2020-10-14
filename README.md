@@ -12,6 +12,6 @@
 ```
 
 ### Migration
-	Migrating old laravel 5.3 to laravel 8 with extra features and updates.
+Migrating old laravel 5.3 to laravel 8 with extra features and updates.
 
 
