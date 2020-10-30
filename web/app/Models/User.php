@@ -50,4 +50,20 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getEmailVerify()
+    {
+        return empty($this->email_verified_at) ? 'NO' : 'YES';
+    }
 }

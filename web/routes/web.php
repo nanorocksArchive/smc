@@ -48,6 +48,11 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+        Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
+
+        Route::post('/profile/change/password', [ProfileController::class, 'changePassword'])->name('profile.change.password');
+
+
     });
 
 });

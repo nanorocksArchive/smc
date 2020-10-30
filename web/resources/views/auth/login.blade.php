@@ -16,13 +16,13 @@
                         @csrf
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required value="andrejnankov@gmail.com">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                                 else.</small>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <input type="password" class="form-control" id="password" name="password" required value="nanorocks123">
                         </div>
 
                         <div class="form-group form-check">

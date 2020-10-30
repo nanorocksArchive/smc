@@ -12,7 +12,7 @@
 
             <div class="card shadow">
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register.user') }}" novalidate>
+                    <form method="POST" action="{{ route('register.user') }}">
                         @csrf
                         <div class="form-group">
                             <label for="name">Full name</label>
