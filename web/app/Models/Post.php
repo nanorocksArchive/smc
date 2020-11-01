@@ -11,11 +11,11 @@ class Post extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function likes()
     {
-        return $this->hasMany('App\Like');
+        return $this->hasMany('App\Models\Like');
     }
 }

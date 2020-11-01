@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
     <title>S.M.C</title>
 </head>
 <body>
@@ -32,7 +31,7 @@
                                 <img src="https://eu.ui-avatars.com/api/?name={{ Auth::user()->name }}" alt="profile"
                                     class="rounded-circle" style="width: 1.8rem">
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item disabled" href="{{ route('profile') }}">{{ Auth::user()->name }}</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>

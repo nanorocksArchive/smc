@@ -9,9 +9,9 @@
 @section('content')
     <div class="row pt-5">
         <div class="col-10 p-0 offset-1">
-            <div class="card shadow">
+            <div class="card shadow rounded-lg border-0">
                 <div class="card-body">
-                    <h2 class="font-weight-bolder">Profile</h2>
+                    <h3 class="font-weight-bolder">Profile</h3>
                     <form method="POST" action="{{ route('profile.update') }}" id="form-profile">
                         <div class="form-row">
                             <div class="form-group col-md-4 m-0">
@@ -47,9 +47,9 @@
 
 
         <div class="col-10 p-0 offset-1 mt-5">
-            <div class="card shadow">
+            <div class="card shadow rounded-lg border-0">
                 <div class="card-body">
-                    <h2 class="font-weight-bolder">Change Password</h2>
+                    <h3 class="font-weight-bolder">Change Password</h3>
                     <form method="POST" action="{{ route('profile.change.password') }}" id="change-password">
                         @csrf
                         <div class="form-row">
@@ -144,10 +144,10 @@
                     data
                 }))
             }).then(function (response) {
-                console.log(response);
+                // console.log(response);
                 Swal.fire(
                     (response.data.errors != "true") ? response.status.toString() : "400",
-                    (response.status == 200) ? response.data.message : response.data.errors.newPassword[0],
+                    (response.status == 200) ? response.data.message : (response.data.errors.newPassword) ? response.data.errors.newPassword[0] : response.data.errors.password[0],
                     'info'
                 );
             });

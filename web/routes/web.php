@@ -44,14 +44,17 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+        Route::get('/my/posts', [DashboardController::class, 'authUserPosts'])->name('my.posts');
+
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-        Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
+        Route::post('ajax/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
 
-        Route::post('/profile/change/password', [ProfileController::class, 'changePassword'])->name('profile.change.password');
+        Route::post('ajax/profile/change/password', [ProfileController::class, 'changePassword'])->name('profile.change.password');
 
+        Route::post('ajax/like', [DashboardController::class, 'toggleLike'])->name('toggle.like');
 
     });
 

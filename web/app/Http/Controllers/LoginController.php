@@ -26,7 +26,7 @@ class LoginController extends Controller
             if (is_null(Auth::user()->email_verified_at))
             {
                 Auth::logout();
-                
+
                 $request->session()->flash('login', ['icon' => 'error', 'title' => 'Email is not verified', 'msg' => 'Verify your email!']);
 
                 return redirect('login');
@@ -67,4 +67,5 @@ class LoginController extends Controller
 
         return redirect('login');
     }
+
 }
