@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="row pt-5">
+    <div class="row pt-5 mt-5">
         <div class="col-10 p-0 offset-1">
             <div class="card shadow rounded-lg border-0">
                 <div class="card-body">

@@ -2,11 +2,11 @@
      <div class="card-body">
          @if ($post->user_id == Auth::user()->id)
              <p class="text-right mb-1" style="font-size: 1.4rem">
-                 <button class="btn btn-success p-1 rounded font-weight-bolder">Edit</button>
+             <button id="edit-post-{{ $post->id }}" class="btn btn-success p-1 rounded font-weight-bolder" onclick="editPost('{{ $post->id }}', '{{ route('post.edit') }}')">Edit</button>
              <button class="btn btn-danger p-1 rounded font-weight-bolder" onclick="deletePost('{{ $post->id }}', '{{ route('post.delete') }}')">Delete</button>
              </p>
          @endif
-         <p>
+         <p id="post-body-{{ $post->id }}">
              {{ $post->body }}
          </p>
          <div class="d-flex">

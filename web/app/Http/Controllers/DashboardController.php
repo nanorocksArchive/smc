@@ -42,13 +42,12 @@ class DashboardController extends Controller
      */
     public function createPost(Request $request)
     {
-
         $this->validate($request, [
             'post' => 'required|min:20|max:1000'
         ]);
 
         $post = new Post();
-        $post->body = $request['body'];
+        $post->body = $request['post'];
         $post->user_id = Auth::user()->id;
         $success = $post->save();
 
@@ -87,19 +86,27 @@ class DashboardController extends Controller
 
     }
 
-
-
-    public function postEditPost(Request $request)
+    /**
+     * editPost
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function editPost(PostRequest $request)
     {
         $this->validate($request, [
-            'body' => 'required|min:20'
+            'post' => 'required|min:20|max:1000'
         ]);
 
         $post = Post::find($request['id']);
-        $post->body = $request['body'];
+        $post->body = $request['post'];
         $post->update();
 
-        return response()->json(['message' => 'Post edited!', 200]);
+        return [
+            'error' => false,
+            'message' => 'Successful updated post',
+            'status' => 1,
+        ];
     }
 
     /**

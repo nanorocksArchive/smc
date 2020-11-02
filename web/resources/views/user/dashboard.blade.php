@@ -142,7 +142,6 @@
             }).then((result) => {
             if (result.isConfirmed) {
 
-
                 let postId = document.getElementById('post-' + id);
 
                 let data = {
@@ -192,16 +191,77 @@
             ) {
                 swalWithBootstrapButtons.fire(
                 'Cancelled',
-                'Your imaginary post is safe :)',
+                'Your fancy post is safe :)',
                 'error'
                 );
             }
-            })
+            });
+        }
 
+        function editPost(id, url){
 
+            let status = document.getElementById('edit-post-' + id).innerText;
 
+            let post = document.getElementById('post-body-' + id ).innerText;
 
+            if(status == 'Edit'){
 
+                let html = `<div class="form-group">
+                    <textarea class="form-control form-control-sm" rows="4" id="edit-post-body-${id}"
+                        placeholder="Update your post here ..." name="post" required minlength="20" maxlength="1000">${post}</textarea>
+                    <span class="small text-danger"></span>
+                </div>`
+
+                document.getElementById('post-body-' + id ).innerHTML = html;
+
+                document.getElementById('edit-post-' + id).innerText = 'Update';
+
+                document.getElementById('edit-post-' + id).classList.add('btn-warning');
+
+                return;
+            }
+
+            post = document.getElementById('edit-post-body-' + id ).value;
+
+            let data = {
+                'id': id,
+                'post': post
+            };
+
+            methodForm = 'POST'
+
+            fetch(url, {
+                method: methodForm,
+                headers: {
+                    'x-csrf-token': token,
+                    'accept': 'application/json',
+                    'Content-Type': 'application/json; charset=utf-8'
+                },
+                body: JSON.stringify(data)
+            }).then(function(response) {
+                return response.json().then(data => ({
+                    status: response.status,
+                    data
+                }))
+            }).then(function(response) {
+
+                if(response.status != 200){
+                    Swal.fire(
+                        response.data.message,
+                        response.data.errors.post[0],
+                        'error'
+                    );
+                    return;
+                }
+
+                document.getElementById('edit-post-' + id).innerText = 'Edit';
+
+                document.getElementById('edit-post-' + id).classList.remove('btn-warning');
+
+                document.getElementById('post-body-' + id ).innerHTML = post;
+
+                // console.log(response);
+            });
         }
 
     </script>
