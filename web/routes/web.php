@@ -50,11 +50,17 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+        Route::post('post/create', [DashboardController::class, 'createPost'])->name('post.create');
+
         Route::post('ajax/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
 
         Route::post('ajax/profile/change/password', [ProfileController::class, 'changePassword'])->name('profile.change.password');
 
         Route::post('ajax/like', [DashboardController::class, 'toggleLike'])->name('toggle.like');
+
+        Route::post('ajax/post/delete', [DashboardController::class, 'deletePost'])->name('post.delete');
+
+        Route::post('ajax/post/edit', [DashboardController::class, 'editPost'])->name('post.edit');
 
     });
 

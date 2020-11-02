@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="row pt-5">
+    <div class="row pt-5 mt-5">
         <div class="col-12 col-sm-12 col-md-8 col-lg-8 offset-0 offset-sm-0 offset-md-2 offset-lg-2">
 
             <div class="card shadow">
@@ -17,12 +17,12 @@
                         <div class="form-group">
                             <label for="name">Full name</label>
                             <input type="text" class="form-control" id="name" aria-describedby="nameHelp" name="name"
-                                required value="Andrej Nankov">
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email"
-                                required value="andrejnankov@gmail.com" onfocus="document.getElementById('emailMsg').classList.add('d-none');">
+                                required onfocus="document.getElementById('emailMsg').classList.add('d-none');">
                                 @if(Session::has('errors'))
                                     <small id="emailMsg" class="form-text text-danger">{{ $errors->first('email') }}</small>
                                 @enderror
@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password" required
-                                onkeyup="passwordMatch(); passwordLength()" min="8" value="nanorocks123" onfocus="document.getElementById('passwordMsg').classList.add('d-none');">
+                                onkeyup="passwordMatch(); passwordLength()" min="8" onfocus="document.getElementById('passwordMsg').classList.add('d-none');">
                                 <span id="passMsg" class="small"></span>
                                 @if(Session::has('errors'))
                                     <small id="passwordMsg" class="form-text text-danger">{{ $errors->first('password') }}</small>
@@ -41,7 +41,7 @@
                         <div class="form-group">
                             <label for="confirm">Confirm Password</label>
                             <input type="password" class="form-control" id="confirm" name="confirm" required
-                                onkeyup="passwordMatch();" min="8" value="nanorocks123">
+                                onkeyup="passwordMatch();" min="8">
                             <span id="confMsg" class="small"></span>
                         </div>
 

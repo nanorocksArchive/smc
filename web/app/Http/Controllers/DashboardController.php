@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Like;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -16,8 +17,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
-       // dd($posts);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(6);
         return view('user.dashboard', compact('posts'));
     }
 
@@ -28,40 +28,66 @@ class DashboardController extends Controller
      */
     public function authUserPosts()
     {
-        $posts = Auth::user()->posts;
+        $user = auth()->user();
+        $posts = $user->posts()->paginate(6);
         return view('user.dashboard', compact('posts'));
     }
 
 
-    public function postCreatePost(Request $requests)
+    /**
+     * createPost
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function createPost(Request $request)
     {
-        $this->validate($requests, [
-            'body' => 'required|min:20'
 
+        $this->validate($request, [
+            'post' => 'required|min:20|max:1000'
         ]);
 
         $post = new Post();
-        $post->body = $requests['body'];
+        $post->body = $request['body'];
         $post->user_id = Auth::user()->id;
-        $succ = $post->save();
-        $message = 'We have an error.';
-        if ($succ) {
-            $message = 'Post Successfull created!';
+        $success = $post->save();
+
+        $msg = 'Post not created';
+        $title = 'Oops...';
+        $icon = 'error';
+
+        if ($success) {
+            $msg = 'Post successful created!';
+            $title = 'Yay...';
+            $icon = 'success';
         }
 
-        return redirect()->to('/dashboard')->with(['message' => $message]);
+        $request->session()->flash('dashboard', ['icon' => $icon, 'title' => $title, 'msg' => $msg]);
+
+        return redirect('dashboard');
     }
 
-    public function getDeletePost($post_id)
+    /**
+     * deletePost
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function deletePost(PostRequest $request)
     {
-        $post = Post::where('id', $post_id)->first();
-        if (Auth::user() != $post->user) {
-            return redirect()->back();
-        }
+        $post = Post::where('id', $request->id)->first();
 
         $post->delete();
-        return redirect()->to('dashboard')->with('message', 'Succesfull deleted post');
+
+        return [
+            'error' => false,
+            'message' => 'Successful deleted post',
+            'status' => 1,
+        ];
+
     }
+
+
 
     public function postEditPost(Request $request)
     {

@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="row pt-5">
+    <div class="row pt-5 mt-5">
         <div class="col-12 col-sm-12 col-md-8 col-lg-8 offset-0 offset-sm-0 offset-md-2 offset-lg-2">
 
             <div class="card shadow">
@@ -16,13 +16,13 @@
                         @csrf
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required value="andrejnankov@gmail.com">
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required>
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                                 else.</small>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" required value="nanorocks123">
+                            <input type="password" class="form-control" id="password" name="password" required>
                         </div>
 
                         <div class="form-group form-check">
